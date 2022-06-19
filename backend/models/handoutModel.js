@@ -5,6 +5,9 @@ const handoutSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    desc: {
+        type: String,
+    },
     img:{
         type: String,
         required: true
@@ -12,10 +15,6 @@ const handoutSchema = new mongoose.Schema({
     file:{
         type: String,
         required: true
-    },
-    class:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'class'
     },
     comment:{
         type: String,

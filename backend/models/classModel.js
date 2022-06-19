@@ -1,13 +1,15 @@
 import mongoose from "mongoose";
 
 const classSchema = new mongoose.Schema({
-    name:{
+    className:{
         type: String,
-        required: true
+        required: true,
+        uppercase: true,
+        unique: true
     },
-    resourses:[{
+    courses:[{
         type : mongoose.Schema.Types.ObjectId,
-        ref: 'handout'
+        ref: 'course'
     }]
 })
 
