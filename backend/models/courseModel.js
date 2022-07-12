@@ -4,16 +4,16 @@ const courseSchema = new mongoose.Schema({
     courseName:{
         type: String,
         required: true,
-        unique: true
+        // unique: true
     },
     courseCode: {
         type: String,
         required: true,
-        unique: true
+        // unique: true
     },
-    resources:[{
+    handouts:[{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'handout'
+        ref: 'handout' 
     }]
 })
 

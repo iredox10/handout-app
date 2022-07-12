@@ -5,7 +5,7 @@ const classSchema = new mongoose.Schema({
         type: String,
         required: true,
         uppercase: true,
-        unique: true
+        // unique: true
     },
     courses:[{
         type : mongoose.Schema.Types.ObjectId,

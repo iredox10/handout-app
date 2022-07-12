@@ -16,33 +16,6 @@ export const home = async (req,res) =>{
     }
 }
 
-export const add_school = async (req,res) =>{
-    try {
-        const school = await School.create(req.body)
-        res.status(201).json(school)
-    } catch (err) {
-        console.log(err)
-    }
-}
-
-export const get_schools = async (req,res) =>{
-    try {
-        const schools = await School.find()
-        res.status(200).json({schools})
-    } catch (err) {
-        
-    }
-}
-
-export const get_school = async (req,res,next) =>{
-    try {
-        const school = await School.findById(req.params.id)
-        const department = await School.findById(req.params.id).populate('departments')
-        !school ? next() : res.status(200).json({school,department})
-    } catch (err) {
-        console.log(err)
-    }
-}
 
 
 export const add_department = async (req,res) =>{
@@ -87,23 +60,23 @@ export const add_class = async (req,res) =>{
 export const add_course = async (req,res) =>{
     try {
         const course = await Course.create(req.body)
-        const classs = await classs.findById(req.params.id)
-        classs.courses.push(course)
-        await classs.save()
-        res.status(201).json({course,classs})
+        const level = await Class.findById(req.params.id)
+        level.courses.push(course)
+        await level.save()
+        res.status(201).json({course,level})
     } catch (err) {
         console.log(err)
     }
 }
 
-export const add_handout = async (req,res) =>{
-    try {
-        const handout = await Handout.create(req.body)
-        const course = await Course.findById(req.params.id)
-        course.resources.push(handout)
-        await course.save()
-        res.status(201).json(course)
-    } catch (err) {
+export const get_courses = async (req,res) =>{
+    try{
+        const level = await Class.findById(req.params.id)
+        const courses = await Class.findById(req.params.id).populate('courses')
+        res.json({courses})
+    }catch (err) {
         console.log(err)
     }
 }
+
+
